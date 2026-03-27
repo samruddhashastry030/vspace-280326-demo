@@ -37,7 +37,7 @@ pinout:
   uo[4]: "Segment E"
   uo[5]: "Segment F"
   uo[6]: "Segment G"
-  uo[7]: "Decimal Point (Off)"
+  uo[7]: "Unused (Tied Low)"
 
   # Bidirectional pins
   uio[0]: ""
