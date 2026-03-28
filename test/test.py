@@ -36,11 +36,12 @@ class PresentModel:
         self.pt = pt64 & ((1 << 64) - 1)
 
     def _key_schedule(self, k, rnd):
-        k = ((k << 61) | (k >> 19)) & ((1 << 80) - 1)
-        top4 = (k >> 76) & 0xF
-        k = (k & ~(0xF << 76)) | (self.SBOX[top4] << 76)
-        k ^= (rnd & 0x1F) << 15
-        return k
+    MASK80 = (1 << 80) - 1
+    k = ((k << 61) | (k >> 19)) & MASK80
+    top4 = (k >> 76) & 0xF
+    k = (k & (MASK80 ^ (0xF << 76))) | (self.SBOX[top4] << 76)  # ← fix here
+    k ^= (rnd & 0x1F) << 15
+    return k
 
     def encrypt(self):
         state = self.pt
