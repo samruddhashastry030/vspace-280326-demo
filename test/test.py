@@ -61,7 +61,6 @@ class PresentModel:
         rk     = (key >> 16) & ((1 << 64) - 1)
         state ^= rk
         self.ct   = state
-        self.done = True
         return state
 
     def get_note(self):
@@ -308,3 +307,9 @@ async def test_avalanche_effect(dut):
     assert ct_a != ct_b,    "Avalanche FAILED: identical ciphertexts!"
     assert diff_bits >= 16, f"Avalanche WEAK: only {diff_bits} bits differ (need ≥16)"
     dut._log.info(f"Avalanche effect: PASS ({diff_bits} bits differ)")
+
+
+_m = PresentModel()
+_m.load_pt(0x0000000000000000)
+_m.load_key(0x00000000000000000000)
+print(f"Self-check: {hex(_m.encrypt())}")
