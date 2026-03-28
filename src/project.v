@@ -33,7 +33,7 @@ module tt_um_cryptomuse #(
 );
 
     // Tie off unused bidir outputs
-    assign uio_oe  = 8'b0000_0001;   // only uio_out[0] (done) is output
+    assign uio_oe  = 8'hFF;   // only uio_out[0] (done) is output
     assign uio_out[7:1] = 7'b0;
 
     // ── Pin aliases ────────────────────────────────────────────
