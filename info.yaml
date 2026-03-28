@@ -7,7 +7,7 @@ project:
   language:     "Verilog"
   clock_hz:     50000000
   # How many tiles your design occupies?
-  tiles: "1x1"
+  tiles: "2x1"
   # Your top module name must start with "tt_um_".
   top_module:  "tt_um_cryptomuse"
   # List your project's source files here.
